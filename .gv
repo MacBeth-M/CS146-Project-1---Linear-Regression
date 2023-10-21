@@ -1,28 +1,36 @@
 digraph {
 	sigma [label="sigma
 ~
-TruncatedNormal" shape=ellipse]
-	c0 [label="c0
+Uniform" shape=ellipse]
+	b [label="b
 ~
-TruncatedNormal" shape=ellipse]
-	c1 [label="c1
+Normal" shape=ellipse]
+	a [label="a
 ~
-TruncatedNormal" shape=ellipse]
+Normal" shape=ellipse]
+	nu [label="nu
+~
+Exponential" shape=ellipse]
 	subgraph cluster414 {
 		y [label="y
 ~
-Normal" shape=ellipse style=filled]
+MutableData" shape=box style="rounded, filled"]
 		x [label="x
 ~
 MutableData" shape=box style="rounded, filled"]
+		likelihood [label="likelihood
+~
+StudentT" shape=ellipse style=filled]
 		mu [label="mu
 ~
 Deterministic" shape=box]
 		label=414 labeljust=r labelloc=b style=rounded
 	}
-	c0 -> mu
+	likelihood -> y
 	x -> mu
-	c1 -> mu
-	sigma -> y
-	mu -> y
+	b -> mu
+	a -> mu
+	sigma -> likelihood
+	mu -> likelihood
+	nu -> likelihood
 }
